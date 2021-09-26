@@ -88,7 +88,7 @@ app.get('/',(req, res) => {
                     disable_notification:false
                 }
                 notify.send(message,fetchOption, apiOption);
-                res.send('Stripe Integration! - Clue Mediator');
+                res.send(message);
             })
         });
     }).on("error", (err) => {

@@ -59,5 +59,9 @@ cron.schedule(' */2 * * * *', async function () {
     
 });
 
+app.get('/send',(req, res) => {
+    res.send('Stripe Integration! - Clue Mediator');
+});
+
 
 app.listen(4000);

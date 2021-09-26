@@ -22,8 +22,8 @@ const sendNotify = async () =>{
   }
 
 // Schedule tasks to be run on the server.
-cron.schedule('*/15 * * * * *', async function () {
-    https.get('https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=QMZ1F89JE8ZCDEAHM3KJCV8HX42CWBSYWD', (resp) => {
+cron.schedule(' */2 * * * *', async function () {
+    https.get('https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=AFUNJEG3MDP4VF8XIMQSJVBAHTQ7M3KEXV', (resp) => {
         let data = '';
 
         // A chunk of data has been received.

@@ -22,7 +22,44 @@ const sendNotify = async () =>{
   }
 
 // Schedule tasks to be run on the server.
-cron.schedule(' */2 * * * *', async function () {
+// cron.schedule(' */2 * * * *', async function () {
+//     https.get('https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=AFUNJEG3MDP4VF8XIMQSJVBAHTQ7M3KEXV', (resp) => {
+//         let data = '';
+
+//         // A chunk of data has been received.
+//         resp.on('data', (chunk) => {
+//             data += chunk;
+//         });
+
+//         // The whole response has been received. Print out the result.
+//         resp.on('end', () => {
+//             let bnbPrice = JSON.parse(data).result.ethusd
+//             console.log(bnbPrice);
+//             priceClss.getPrice().then(bal =>{
+            
+//                 egaPrice = (Number(bal.bnbBalance) / Number(bal.egaBalance)) * (Number(bnbPrice)) ;
+//                 console.log('running a task every minute : ', egaPrice);
+
+//                 let notify = new Telegram({token:BOT_TOKEN, chatId:CHAT_ID})
+                
+//                 var message = 'The current price of EGA token is ' + egaPrice + ' USD'
+//                 // await notify.send('The current price of EGA token is ' + transactions[transactions.length - 1].p);
+//                 console.log('here is the notify object is :::::::::::::::::::::', message)
+//                 const fetchOption = {}
+//                 const apiOption = {
+//                     disable_web_page_preview:false,
+//                     disable_notification:false
+//                 }
+//                 notify.send(message,fetchOption, apiOption);
+//             })
+//         });
+//     }).on("error", (err) => {
+//           console.log("Error: " + err.message);
+//     });    
+    
+// });
+
+app.get('/',(req, res) => {
     https.get('https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=AFUNJEG3MDP4VF8XIMQSJVBAHTQ7M3KEXV', (resp) => {
         let data = '';
 
@@ -51,16 +88,13 @@ cron.schedule(' */2 * * * *', async function () {
                     disable_notification:false
                 }
                 notify.send(message,fetchOption, apiOption);
+                res.send('Stripe Integration! - Clue Mediator');
             })
         });
-      }).on("error", (err) => {
+    }).on("error", (err) => {
           console.log("Error: " + err.message);
-      });    
+    });
     
-});
-
-app.get('/send',(req, res) => {
-    res.send('Stripe Integration! - Clue Mediator');
 });
 
 

@@ -59,7 +59,7 @@ const sendNotify = async () =>{
     
 // });
 
-app.get('/',(req, res) => {
+app.post('/',(req, res) => {
     https.get('https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=AFUNJEG3MDP4VF8XIMQSJVBAHTQ7M3KEXV', (resp) => {
         let data = '';
 
